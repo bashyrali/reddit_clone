@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.HttpStatus.OK;
 
 @AllArgsConstructor
@@ -24,15 +25,15 @@ public class AuthController {
     private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<?> signup(@RequestBody RegisterRequest registerRequest){
         userService.signup(registerRequest);
-        return new ResponseEntity<>("Пользователь успешно зарегистрирован", HttpStatus.OK);
+        return new ResponseEntity<>("User Registration Successful", OK);
     }
 
     @GetMapping("/accountVerification/{token}")
     public ResponseEntity<?> accountVerification(@PathVariable String token){
         userService.verifyAccount(token);
-        return new ResponseEntity<>("Account activated succesecfully", HttpStatus.OK) ;
+        return new ResponseEntity<>("Account activated succesecfully", OK) ;
     }
 
     @PostMapping("/login")
