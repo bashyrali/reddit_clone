@@ -9,9 +9,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterRequest {
+public class LoginRequest {
     private String username;
-    private String email;
     private String password;
-    private Set<String> roles;
 }

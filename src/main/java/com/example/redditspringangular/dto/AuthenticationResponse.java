@@ -1,17 +1,22 @@
 package com.example.redditspringangular.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
 import java.util.Set;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class RegisterRequest {
+@NoArgsConstructor
+@Builder
+public class AuthenticationResponse {
+    private String authenticationToken;
+    private String refreshToken;
+    private Instant expiresAt;
     private String username;
-    private String email;
-    private String password;
     private Set<String> roles;
 }
+
